@@ -41,11 +41,11 @@ class FeatureContext extends BehatContext
     }
 
     /**
-     * @When /^I request a list of issues for the Symfony repository$/
+     * @When /^I request a list of issues for the "([^"]*)" repository from user "([^"]*)"$/
      */
-    public function iRequestAListOfIssuesForTheSymfonyRepository()
+    public function iRequestAListOfIssuesForTheRepositoryFromUser($arg1, $arg2)
     {
-        $issues = $this->client->issues()->all("symfony", "symfony");
+        $issues = $this->client->issues()->all($arg1, $arg2);
         $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
 
         if (200 != $statusCode) {
@@ -53,22 +53,6 @@ class FeatureContext extends BehatContext
         }
 
         $this->issues = $issues;
-    }
-
-    /**
-     * @Then /^I should get at least one issue back$/
-     */
-    public function iShouldGetAtLeastOneIssueBack()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When /^I request a list of issues for the "([^"]*)" repository from user "([^"]*)"$/
-     */
-    public function iRequestAListOfIssuesForTheRepositoryFromUser($arg1, $arg2)
-    {
-        throw new PendingException();
     }
 
     /**
