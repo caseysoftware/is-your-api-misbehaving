@@ -62,4 +62,20 @@ class FeatureContext extends BehatContext
     {
         throw new PendingException();
     }
+
+    /**
+     * @When /^I request a list of issues for the "([^"]*)" repository from user "([^"]*)"$/
+     */
+    public function iRequestAListOfIssuesForTheRepositoryFromUser($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should get at least "([^"]*)" result$/
+     */
+    public function iShouldGetAtLeastResult($arg1)
+    {
+        throw new PendingException();
+    }
 }
