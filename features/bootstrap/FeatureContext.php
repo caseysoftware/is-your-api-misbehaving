@@ -21,6 +21,8 @@ use \Github\Client;
 class FeatureContext extends BehatContext
 {
     protected $client = null;
+    protected $repositories = null;
+
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
@@ -37,7 +39,7 @@ class FeatureContext extends BehatContext
      */
     public function iAmAnAnonymousUser()
     {
-        throw new PendingException();
+        // don't do anything here
     }
 
     /**
@@ -45,7 +47,14 @@ class FeatureContext extends BehatContext
      */
     public function iSearchForTheTerm($arg1)
     {
-        throw new PendingException();
+        $repositories = $this->client->search()->repositories($arg1);
+        $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
+
+        if (200 != $statusCode) {
+            throw new Exception("Expected a 200 status code but got $statusCode instead!");
+        }
+
+        $this->repositories = $repositories;
     }
 
     /**
