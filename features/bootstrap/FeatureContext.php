@@ -6,6 +6,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use \Github\Client;
 
 //
 // Require 3rd-party libraries here:
@@ -19,6 +20,7 @@ use Behat\Gherkin\Node\PyStringNode,
  */
 class FeatureContext extends BehatContext
 {
+    protected $client = null;
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
@@ -27,18 +29,30 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        // Initialize your context here
+        $this->client = new \Github\Client();
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    /**
+     * @Given /^I am an anonymous user$/
+     */
+    public function iAmAnAnonymousUser()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I search for the term "([^"]*)"$/
+     */
+    public function iSearchForTheTerm($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should get at least one repository back$/
+     */
+    public function iShouldGetAtLeastOneRepositoryBack()
+    {
+        throw new PendingException();
+    }
 }
