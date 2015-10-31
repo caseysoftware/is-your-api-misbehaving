@@ -19,6 +19,9 @@ use Behat\Gherkin\Node\PyStringNode,
  */
 class FeatureContext extends BehatContext
 {
+    protected $client = null;
+    protected $issues = null;
+
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
@@ -27,14 +30,14 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        // Initialize your context here
+        $this->client = new \Github\Client();
     }
     /**
      * @Given /^I am an anonymous user$/
      */
     public function iAmAnAnonymousUser()
     {
-        throw new PendingException();
+        // don't do anything here
     }
 
     /**
@@ -42,7 +45,14 @@ class FeatureContext extends BehatContext
      */
     public function iRequestAListOfIssuesForTheSymfonyRepository()
     {
-        throw new PendingException();
+        $issues = $this->client->issues()->all("symfony", "symfony");
+        $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
+
+        if (200 != $statusCode) {
+            throw new Exception("Expected a 200 status code but got $statusCode instead!");
+        }
+
+        $this->issues = $issues;
     }
 
     /**
