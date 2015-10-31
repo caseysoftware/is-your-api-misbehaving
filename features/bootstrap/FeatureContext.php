@@ -20,7 +20,7 @@ use Behat\Gherkin\Node\PyStringNode,
 class FeatureContext extends BehatContext
 {
     protected $client = null;
-    protected $issues = null;
+    protected $results = null;
 
     /**
      * Initializes context.
@@ -52,7 +52,7 @@ class FeatureContext extends BehatContext
             throw new Exception("Expected a 200 status code but got $statusCode instead!");
         }
 
-        $this->issues = $issues;
+        $this->results = $issues;
     }
 
     /**
@@ -60,6 +60,8 @@ class FeatureContext extends BehatContext
      */
     public function iShouldGetAtLeastResult($arg1)
     {
-        throw new PendingException();
+        if (count($this->results) < $arg1) {
+            throw new Exception("Expected at least $arg1 result but got back " . count($this->results));
+        }
     }
 }
