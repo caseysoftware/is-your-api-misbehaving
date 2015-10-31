@@ -29,16 +29,27 @@ class FeatureContext extends BehatContext
     {
         // Initialize your context here
     }
+    /**
+     * @Given /^I am an anonymous user$/
+     */
+    public function iAmAnAnonymousUser()
+    {
+        throw new PendingException();
+    }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    /**
+     * @When /^I request a list of issues for the Symfony repository$/
+     */
+    public function iRequestAListOfIssuesForTheSymfonyRepository()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should get at least one issue back$/
+     */
+    public function iShouldGetAtLeastOneIssueBack()
+    {
+        throw new PendingException();
+    }
 }
