@@ -62,6 +62,8 @@ class FeatureContext extends BehatContext
      */
     public function iShouldGetAtLeastOneRepositoryBack()
     {
-        throw new PendingException();
+        if (0 == $this->repositories['total_count']) {
+            throw new Exception("Expected at least one repository but got back zero.");
+        }
     }
 }
