@@ -107,7 +107,12 @@ class FeatureContext extends BehatContext
      */
     public function iWatchTheRepositoryFromUser($arg1, $arg2)
     {
-        throw new PendingException();
+        $this->client->api('current_user')->watchers()->watch($arg2, $arg1);
+        $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
+
+        if (204 != $statusCode) {
+            throw new Exception("Expected a 204 status code but got $statusCode instead!");
+        }
     }
 
     /**
