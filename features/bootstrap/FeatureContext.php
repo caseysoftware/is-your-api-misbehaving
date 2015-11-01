@@ -101,4 +101,20 @@ class FeatureContext extends BehatContext
 
         throw new Exception("Expected to find a repository called '$needle' but it doesn't exist.");
     }
+
+    /**
+     * @When /^I watch the "([^"]*)" repository from user "([^"]*)"$/
+     */
+    public function iWatchTheRepositoryFromUser($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^The "([^"]*)" repository from user "([^"]*)" will list me as a watcher$/
+     */
+    public function theRepositoryFromUserWillListMeAsAWatcher($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
 }
