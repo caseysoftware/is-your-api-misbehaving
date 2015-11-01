@@ -91,6 +91,14 @@ class FeatureContext extends BehatContext
      */
     public function theResultsShouldIncludeARepositoryNamed($arg1)
     {
-        throw new PendingException();
+        $needle = $this->params['github_username'] . '/' . $arg1;
+
+        foreach($this->results as $repo) {
+            if ($needle == $repo['full_name']) {
+                return true;
+            }
+        }
+
+        throw new Exception("Expected to find a repository called '$needle' but it doesn't exist.");
     }
 }
