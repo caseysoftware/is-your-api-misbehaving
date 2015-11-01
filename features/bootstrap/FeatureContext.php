@@ -137,6 +137,11 @@ class FeatureContext extends BehatContext
      */
     public function iForkTheRepositoryFromUser($arg1, $arg2)
     {
-        throw new PendingException();
+        $this->client->api('repo')->forks()->create($arg2, $arg1);
+        $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
+
+        if (202 != $statusCode) {
+            throw new Exception("Expected a 204 status code but got $statusCode instead!");
+        }
     }
 }
