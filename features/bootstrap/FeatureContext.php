@@ -120,6 +120,15 @@ class FeatureContext extends BehatContext
      */
     public function theRepositoryFromUserWillListMeAsAWatcher($arg1, $arg2)
     {
-        throw new PendingException();
+        $repository = $arg2 . '/' . $arg1;
+        $watchers = $this->client->api('repo')->watchers($arg2, $arg1);
+
+        foreach($watchers as $watcher) {
+            if ($this->params['github_username'] == $watcher['login']) {
+                return true;
+            }
+        }
+
+        throw new Exception("Expected '" . $this->params['github_username'] . "' to be a watcher of the '$repository' repository but they were not.");
     }
 }
