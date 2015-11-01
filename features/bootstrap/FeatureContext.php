@@ -131,4 +131,12 @@ class FeatureContext extends BehatContext
 
         throw new Exception("Expected '" . $this->params['github_username'] . "' to be a watcher of the '$repository' repository but they were not.");
     }
+
+    /**
+     * @When /^I fork the "([^"]*)" repository from user "([^"]*)"$/
+     */
+    public function iForkTheRepositoryFromUser($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
 }
