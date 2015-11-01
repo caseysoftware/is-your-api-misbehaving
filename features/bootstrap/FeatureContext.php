@@ -19,6 +19,8 @@ use Behat\Gherkin\Node\PyStringNode,
  */
 class FeatureContext extends BehatContext
 {
+    protected $params = null;
+
     protected $client = null;
     protected $results = null;
 
@@ -30,6 +32,7 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
+        $this->params = $parameters;
         $this->client = new \Github\Client();
     }
     /**
