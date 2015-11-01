@@ -67,4 +67,28 @@ class FeatureContext extends BehatContext
             throw new Exception("Expected at least $arg1 result but got back " . count($this->results));
         }
     }
+
+    /**
+     * @Given /^I am an authenticated user$/
+     */
+    public function iAmAnAuthenticatedUser()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I request a list of my repositories$/
+     */
+    public function iRequestAListOfMyRepositories()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^The results should include a repository named "([^"]*)"$/
+     */
+    public function theResultsShouldIncludeARepositoryNamed($arg1)
+    {
+        throw new PendingException();
+    }
 }
