@@ -73,7 +73,7 @@ class FeatureContext extends BehatContext
      */
     public function iAmAnAuthenticatedUser()
     {
-        throw new PendingException();
+        $this->client->authenticate($this->params['github_username'], $this->params['github_password'], Github\Client::AUTH_HTTP_PASSWORD);
     }
 
     /**
@@ -81,7 +81,9 @@ class FeatureContext extends BehatContext
      */
     public function iRequestAListOfMyRepositories()
     {
-        throw new PendingException();
+        $repositories = $this->client->api('current_user')->repositories();
+
+        $this->results = $repositories;
     }
 
     /**
