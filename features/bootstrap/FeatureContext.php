@@ -144,4 +144,12 @@ class FeatureContext extends BehatContext
             throw new Exception("Expected a 204 status code but got $statusCode instead!");
         }
     }
+
+    /**
+     * @When /^I create the "([^"]*)" respository$/
+     */
+    public function iCreateTheRespository($arg1)
+    {
+        throw new PendingException();
+    }
 }
