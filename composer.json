@@ -2,5 +2,8 @@
     "require": {
         "behat/behat": "2.4.*@stable",
         "knplabs/github-api": "~1.4"
+    },
+    "config" : {
+        "bin-dir" : "bin"
     }
 }
