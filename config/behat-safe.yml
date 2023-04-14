@@ -1,0 +1,9 @@
+default:
+    paths:
+        features:              ../features
+        bootstrap:             ../features/bootstrap
+    context:
+        class: FeatureContext
+        parameters:
+            github_username:   darthhelmet
+            github_password:   luggage12345
