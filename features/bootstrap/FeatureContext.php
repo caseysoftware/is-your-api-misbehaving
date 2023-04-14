@@ -144,4 +144,17 @@ class FeatureContext extends BehatContext
             throw new Exception("Expected a 204 status code but got $statusCode instead!");
         }
     }
+
+    /**
+     * @When /^I create the "([^"]*)" repository$/
+     */
+    public function iCreateTheRepository($arg1)
+    {
+        $this->client->api('repo')->create($arg1, 'This is the repo description', 'http://google.com', true);
+        $statusCode   = $this->client->getHttpClient()->getLastResponse()->getStatusCode();
+
+        if (201 != $statusCode) {
+            throw new Exception("Expected a 201 status code but got $statusCode instead!");
+        }
+    }
 }
